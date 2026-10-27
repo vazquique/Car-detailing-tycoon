@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: pages
@@ -39,3 +40,15 @@ jobs:
           git add -A
           git commit -q -m "Publicar ${GITHUB_SHA::7}"
           git push -q -f "https://x-access-token:${TOKEN}@github.com/${REPO}.git" HEAD:gh-pages
+      # Pushes made with GITHUB_TOKEN don't start a Pages build on their own, so ask for one.
+      - name: Pedir a GitHub que construya la página
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          echo "Configuración de Pages:"
+          curl -sS -H "Authorization: Bearer ${TOKEN}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${REPO}/pages"
+          curl -sS -f -X POST \
+            -H "Authorization: Bearer ${TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${REPO}/pages/builds"
