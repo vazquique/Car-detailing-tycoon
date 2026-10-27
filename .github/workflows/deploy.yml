@@ -1,7 +1,7 @@
 name: Publicar en GitHub Pages
 
-# Builds the game and publishes dist/ to the gh-pages branch.
-# GitHub Pages serves that branch at https://<usuario>.github.io/<repositorio>/
+# Builds the game and deploys dist/ with the official GitHub Pages actions.
+# The game is served at https://<usuario>.github.io/<repositorio>/
 
 on:
   push:
@@ -9,15 +9,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,28 +28,16 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Subir el juego a la rama gh-pages
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          cd dist
-          touch .nojekyll
-          git init -q -b gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "Publicar ${GITHUB_SHA::7}"
-          git push -q -f "https://x-access-token:${TOKEN}@github.com/${REPO}.git" HEAD:gh-pages
-      # Pushes made with GITHUB_TOKEN don't start a Pages build on their own, so ask for one.
-      - name: Pedir a GitHub que construya la página
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          echo "Configuración de Pages:"
-          curl -sS -H "Authorization: Bearer ${TOKEN}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${REPO}/pages"
-          curl -sS -f -X POST \
-            -H "Authorization: Bearer ${TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${REPO}/pages/builds"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
