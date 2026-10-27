@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
         ? viteSingleFile()
         : VitePWA({
             registerType: 'autoUpdate',
-            injectRegister: null,
+            injectRegister: 'auto',
             includeAssets: ['icons/apple-touch-icon.png', 'icons/favicon.svg'],
             manifest: {
               name: 'Car Detailing Tycoon',

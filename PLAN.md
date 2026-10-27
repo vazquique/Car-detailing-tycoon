@@ -19,16 +19,17 @@ Checklist de construcción. Se marca cada punto al terminarlo. Cada fase cierra 
 
 ## Fase 1 — Núcleo jugable
 
-- [ ] Tipos, datos, rng con semilla, formato de números, paleta
-- [ ] Simulación: llegadas, fila, paciencia, bahías, servicios, pago, reputación, reseñas, días y calendario
-- [ ] Render: 8 autos con suciedad y limpieza, bahías, trabajadores, partículas básicas
-- [ ] Tu bahía + minijuego de tallado completo
-- [ ] HUD, pestaña Taller, pestaña Servicios con precios
-- [ ] Guardado y carga
-- [ ] Pruebas de economía, simulación y guardado
-- [ ] Commit fase 1
+- [x] Tipos, datos, rng con semilla, formato de números, paleta
+- [x] Simulación: llegadas, fila, paciencia, bahías, servicios, pago, reputación, reseñas, días y calendario
+- [x] Render: 8 autos con suciedad y limpieza, bahías, trabajadores, partículas básicas
+- [x] Tu bahía + minijuego de tallado completo
+- [x] HUD, pestaña Taller, pestaña Servicios con precios
+- [x] Guardado y carga
+- [x] Pruebas de economía, simulación y guardado
+- [x] Commit fase 1
 
 ## Fase 2 — Profundidad
+_Nota: el motor y la interfaz de casi todo esto se escribieron junto con la fase 1; falta probarlo y pulirlo._
 
 - [ ] 12 servicios y todo el equipo
 - [ ] Personal completo (candidatos, rasgos, XP, cursos, roles de apoyo)
