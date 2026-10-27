@@ -30,3 +30,12 @@ Decisiones tomadas por mi cuenta, con una línea de por qué.
 - **"Sin estancarse"** se mide como: el promedio de ingreso por minuto de los últimos 20 minutos (solo autos atendidos; los pagos de contratos llegan en bloque) debe alcanzar un nuevo máximo al menos cada 20 minutos. Con promedio de 10 min los fines de semana y quincenas creaban picos que no eran crecimiento real.
 - **El bot sigue el tutorial** (después de la Hidrolavadora contrata a su primer ayudante) y **evalúa como una sola compra** los servicios que necesitan dos equipos (Corrección de pintura).
 - **Robustez**: con 8 semillas distintas, 7 cumplen todas las ventanas; la otra tuvo un estancamiento de 23 min. La prueba usa la semilla 1.
+
+## Pulido y entrega
+
+- **Las celebraciones esperan** a que se cierre cualquier ventana abierta, y las monedas/textos flotantes solo salen de bahías visibles.
+- **Barra bajo la fila** con "Fila 3/5 · Toca un auto para ver su pedido", en vez de una etiqueta encima de los autos.
+- **Estilos base en `@layer base`**: con Tailwind v4, los estilos sin capa le ganaban a los degradados de los botones.
+- **El archivo único** también lleva incrustados el ícono y el favicon; ahí no hay service worker (se abre como archivo).
+- **Capturas**: el script limpia celebraciones y avisos antes de cada captura, para que se vea cada pantalla tal cual.
+- **Verificado en navegador**: el minijuego con el dedo (emulación táctil), recargar la página conserva la partida y cobra la ganancia offline, y 3 minutos a ×20 sin errores ni advertencias en la consola.

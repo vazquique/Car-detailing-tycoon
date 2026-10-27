@@ -64,12 +64,12 @@ Checklist de construcción. Se marca cada punto al terminarlo. Cada fase cierra 
 - [x] Accesibilidad (reduced motion, contraste, íconos)
 - [x] Todos los tamaños de celular + aviso horizontal
 - [x] scripts/screenshots.ts + revisión visual y correcciones
-- [ ] 3 min a ×20 sin errores en consola
-- [ ] Commit fase 4
+- [x] 3 min a ×20 sin errores en consola
+- [x] Commit fase 4
 
 ## Fase 5 — Entrega
 
-- [ ] npm run build y npm run build:single
-- [ ] README.md en español
-- [ ] Verificación de criterios de aceptación
-- [ ] Commit fase 5 + push
+- [x] npm run build y npm run build:single
+- [x] README.md en español
+- [x] Verificación de criterios de aceptación
+- [x] Commit fase 5 + push
