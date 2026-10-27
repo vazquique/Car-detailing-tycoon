@@ -416,7 +416,7 @@ export const S = {
     perLevel: `−${lessPct(EQUIPMENT_TIME_PER_LEVEL)}% tiempo y +${pct(EQUIPMENT_QUALITY_PER_LEVEL)}% calidad por nivel`,
     requires: (what: string) => `Requiere ${what}`,
     needsLocation: (loc: string) => `Requiere ${loc}`,
-    unlocks: (what: string) => `Desbloquea: ${what}`,
+    unlocks: (what: string) => `Se usa en: ${what}`,
     affordable: 'Te alcanza',
     current: 'Ahora',
     next: 'Siguiente',

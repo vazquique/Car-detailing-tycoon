@@ -29,20 +29,19 @@ Checklist de construcción. Se marca cada punto al terminarlo. Cada fase cierra 
 - [x] Commit fase 1
 
 ## Fase 2 — Profundidad
-_Nota: el motor y la interfaz de casi todo esto se escribieron junto con la fase 1; falta probarlo y pulirlo._
 
-- [ ] 12 servicios y todo el equipo
-- [ ] Personal completo (candidatos, rasgos, XP, cursos, roles de apoyo)
-- [ ] Mejoras del negocio
-- [ ] Bahías con niveles
-- [ ] 4 locales con ambiente
-- [ ] Marketing
-- [ ] Clima y pronóstico
-- [ ] Eventos
-- [ ] Contratos de flotilla
-- [ ] Resumen del día
-- [ ] Progreso offline
-- [ ] Commit fase 2
+- [x] 12 servicios y todo el equipo
+- [x] Personal completo (candidatos, rasgos, XP, cursos, roles de apoyo)
+- [x] Mejoras del negocio
+- [x] Bahías con niveles
+- [x] 4 locales con ambiente
+- [x] Marketing
+- [x] Clima y pronóstico
+- [x] Eventos
+- [x] Contratos de flotilla
+- [x] Resumen del día
+- [x] Progreso offline
+- [x] Commit fase 2
 
 ## Fase 3 — Meta-progreso y balance
 

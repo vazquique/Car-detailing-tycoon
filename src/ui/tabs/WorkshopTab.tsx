@@ -70,7 +70,9 @@ export function WorkshopTab() {
                   <Badge tone="water">{S.workshop.bayLevel(b.level)}</Badge>
                 </div>
                 <div className="truncate text-[14px] text-dim">
-                  {b.isOwner ? S.workshop.owner : worker ? worker.name : S.workshop.emptyBay} ·{' '}
+                  {b.isOwner ? S.workshop.owner : worker ? worker.name : S.workshop.emptyBay}
+                </div>
+                <div className="truncate text-[14px] text-dim">
                   {S.workshop.baySpeed(pct)}
                   {b.level < BAY_MAX_LEVEL && <span className="text-gain"> → +{nextPct}%</span>}
                 </div>

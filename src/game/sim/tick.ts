@@ -14,12 +14,12 @@ export function tick(s: GameState, dt: number): void {
   s.runStats.playSeconds += dt;
   if (s.hintCooldown > 0) s.hintCooldown -= dt;
 
+  updateEffects(s, dt);
   if (s.night > 0) {
     s.night -= dt;
     if (s.night <= 0) startDay(s);
   } else {
     s.minute += dt * CALENDAR.minutesPerSecond;
-    updateEffects(s, dt);
     runPlannedEvents(s);
     updateArrivals(s, dt);
     updateContracts(s, dt);
