@@ -13,6 +13,7 @@ import { OverlayCanvas } from './ui/OverlayCanvas';
 import { Toasts } from './ui/components/Toast';
 import { DebugPanel } from './ui/Debug';
 import { RotateNotice } from './ui/RotateNotice';
+import { Tutorial } from './ui/tutorial/Tutorial';
 import { setRootAnchor } from './ui/hud/anchors';
 import { setReducedParticles } from './render/particles';
 
@@ -33,6 +34,7 @@ export function App() {
         <Workshop />
         <TabBar />
         <TabSheets />
+        <Tutorial />
         <NightOverlay />
         <ScrubOverlay />
         <ModalHost />

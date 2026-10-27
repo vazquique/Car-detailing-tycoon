@@ -6,6 +6,7 @@ import { ACHIEVEMENTS } from '../../game/data/achievements';
 import { ACHIEVEMENT_ICONS, SERVICE_ICONS } from '../icons';
 import { burstConfetti, SCREEN_LAYER } from '../../render/particles';
 import { play, vibrate } from '../../audio/sfx';
+import { shake } from '../fx';
 import type { ServiceId } from '../../game/types';
 import { ECONOMY } from '../../game/data/economy';
 
@@ -60,7 +61,7 @@ function content(c: C): {
 export function Celebrations() {
   const list = useUi((u) => u.celebrations);
   const pop = useUi((u) => u.popCelebration);
-  const busy = useUi((u) => u.scrubBayId !== null || u.moving !== null);
+  const busy = useUi((u) => u.scrubBayId !== null || u.moving !== null || u.modal !== null);
   const current = busy ? undefined : list[0];
   useEffect(() => {
     if (!current) return;
@@ -68,6 +69,7 @@ export function Celebrations() {
     vibrate([20, 50, 20]);
     const root = document.querySelector('#game')?.getBoundingClientRect();
     burstConfetti(SCREEN_LAYER, (root?.width ?? 390) / 2, (root?.height ?? 800) * 0.42, 60);
+    if (current.kind === 'franchise' || current.kind === 'location') shake();
     const t = window.setTimeout(pop, 3200);
     return () => window.clearTimeout(t);
   }, [current, pop]);

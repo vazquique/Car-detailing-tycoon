@@ -74,7 +74,7 @@ export function TabBar() {
                 )}
               </span>
               <span
-                className={`text-[14px] leading-tight tracking-tight ${active ? 'font-bold' : 'font-medium'}`}
+                className={`text-[14px] leading-tight tracking-[-0.035em] ${active ? 'font-bold' : 'font-medium'}`}
               >
                 {S.tabs[id]}
               </span>

@@ -352,7 +352,7 @@ export function drawBay(
   // Equipment icons on the wall.
   const owned = EQUIPMENT.filter((e) => s.equipment[e.id] > 0);
   const icon = Math.min(wallH * 0.62, w / 9);
-  const shown = owned.slice(-Math.max(1, Math.floor((w - 16) / (icon * 1.25))));
+  const shown = owned.slice(-Math.max(1, Math.floor((w * 0.42) / (icon * 1.25))));
   shown.forEach((e, i) =>
     drawEquipmentGlyph(ctx, e.id, w - 10 - icon / 2 - i * icon * 1.25, wallH * 0.52, icon),
   );

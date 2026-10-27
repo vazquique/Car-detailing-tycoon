@@ -55,15 +55,15 @@ Checklist de construcción. Se marca cada punto al terminarlo. Cada fase cierra 
 
 ## Fase 4 — Pulido
 
-- [ ] Respuesta visual y sonora completa (sfx, partículas, monedas, números)
-- [ ] Celebraciones y transiciones
-- [ ] Mudanza animada
-- [ ] Tutorial
-- [ ] Ajustes (sonido, vibración, resumen, movimiento, exportar/importar, reiniciar, créditos, instalar)
-- [ ] Modo debug (?debug=1)
-- [ ] Accesibilidad (reduced motion, contraste, íconos)
-- [ ] Todos los tamaños de celular + aviso horizontal
-- [ ] scripts/screenshots.ts + revisión visual y correcciones
+- [x] Respuesta visual y sonora completa (sfx, partículas, monedas, números)
+- [x] Celebraciones y transiciones
+- [x] Mudanza animada
+- [x] Tutorial
+- [x] Ajustes (sonido, vibración, resumen, movimiento, exportar/importar, reiniciar, créditos, instalar)
+- [x] Modo debug (?debug=1)
+- [x] Accesibilidad (reduced motion, contraste, íconos)
+- [x] Todos los tamaños de celular + aviso horizontal
+- [x] scripts/screenshots.ts + revisión visual y correcciones
 - [ ] 3 min a ×20 sin errores en consola
 - [ ] Commit fase 4
 

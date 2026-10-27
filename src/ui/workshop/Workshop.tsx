@@ -7,7 +7,7 @@ import { buyBay, bayCost, maxBays } from '../../game/actions/purchase';
 import { LOCATIONS } from '../../game/data/locations';
 import { BuyButton } from '../components/Button';
 import { BayTile } from './BayTile';
-import { QueueStrip, QUEUE_HEIGHT } from './QueueStrip';
+import { QueueStrip, QUEUE_BLOCK_HEIGHT } from './QueueStrip';
 
 const GAP = 8;
 
@@ -25,7 +25,7 @@ function useTileHeight(tiles: number): [React.RefObject<HTMLElement | null>, num
   if (!size) return [ref, null];
   const colW = (size.w - GAP * 3) / 2;
   const rows = Math.max(1, Math.ceil(tiles / 2));
-  const avail = (size.h - QUEUE_HEIGHT - GAP * (rows + 1)) / rows;
+  const avail = (size.h - QUEUE_BLOCK_HEIGHT - GAP * (rows + 1)) / rows;
   return [ref, Math.round(Math.max(colW * 1.2, Math.min(colW * 1.5, avail)))];
 }
 

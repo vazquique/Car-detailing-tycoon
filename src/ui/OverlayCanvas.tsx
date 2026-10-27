@@ -28,7 +28,7 @@ export function OverlayCanvas() {
   return (
     <canvas
       ref={ref}
-      className="pointer-events-none absolute inset-0 z-[55] h-full w-full"
+      className="pointer-events-none absolute inset-0 z-[49] h-full w-full"
       aria-hidden
     />
   );

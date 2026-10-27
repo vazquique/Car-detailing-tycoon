@@ -12,6 +12,8 @@ export interface Settings {
   daySummary: boolean;
   reducedMotion: boolean;
   tutorialDone: boolean;
+  /** Tutorial: the player already looked at the prices. */
+  tutorialPrices: boolean;
 }
 
 export interface Toast {
@@ -43,6 +45,7 @@ const DEFAULT_SETTINGS: Settings = {
   daySummary: true,
   reducedMotion: false,
   tutorialDone: false,
+  tutorialPrices: false,
 };
 
 function prefersReducedMotion(): boolean {

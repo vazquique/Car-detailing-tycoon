@@ -51,6 +51,16 @@ export function burstCoinsFromCenter(n: number): void {
   burstConfetti(SCREEN_LAYER, w / 2, h / 2, 40);
 }
 
+/** Subtle screen shake for big moments (skipped with reduced motion). */
+export function shake(): void {
+  if (useUi.getState().settings.reducedMotion) return;
+  const el = document.querySelector('#game');
+  if (!el) return;
+  el.classList.remove('animate-shake');
+  void (el as HTMLElement).offsetWidth;
+  el.classList.add('animate-shake');
+}
+
 let coinSound = 0;
 setCoinArrive(() => {
   coinSound++;
@@ -63,7 +73,9 @@ function handle(e: FxEvent, s: GameState): void {
   switch (e.kind) {
     case 'paid': {
       bayCarDone(e.bayId, e.customer, e.quality);
-      const p = bayCenter(e.bayId);
+      // Coins and texts only fly from bays the player can actually see.
+      const covered = ui.tab !== null || ui.modal !== null || ui.scrubBayId !== null;
+      const p = covered ? null : bayCenter(e.bayId);
       const total = e.amount + e.tip;
       play('cash');
       vibrate(12);
@@ -142,6 +154,7 @@ function handle(e: FxEvent, s: GameState): void {
         play('achievement');
         ui.toast(S.contracts.success(e.client), 'good');
         burstCoinsFromCenter(16);
+        shake();
       } else {
         play('error');
         ui.toast(S.contracts.fail(e.client), 'bad');

@@ -302,6 +302,7 @@ export const S = {
   workshop: {
     queue: 'Fila',
     queueEmpty: 'Nadie en la fila… por ahora',
+    queueTip: 'Toca un auto para ver su pedido',
     yourBay: 'Tu bahía',
     bay: (n: number) => `Bahía ${n}`,
     emptyBay: 'Sin trabajador',
@@ -314,7 +315,7 @@ export const S = {
     buyBay: 'Comprar bahía',
     bays: 'Bahías',
     bayLevel: (lvl: number) => `Nivel ${lvl}`,
-    baySpeed: (pct: number) => `+${pct}% de velocidad`,
+    baySpeed: (pct: number) => `+${pct}% más rápida`,
     maxBays: 'Ya tienes todas las bahías de este local',
     moveForMore: 'Múdate para tener más bahías',
     reject: 'Rechazar',

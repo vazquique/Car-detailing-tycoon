@@ -452,9 +452,7 @@ export function playRun(start: GameState, opts: BotOptions): { state: GameState;
       const small = scored
         .filter(
           (x) =>
-            x.o.cost <= target * 0.12 &&
-            x.o.cost / x.gain < 900 &&
-            s.money - x.o.cost >= reserve,
+            x.o.cost <= target * 0.12 && x.o.cost / x.gain < 900 && s.money - x.o.cost >= reserve,
         )
         .sort((a, b) => a.o.cost / a.gain - b.o.cost / b.gain)[0];
       if (small && !small.o.label.startsWith('move:')) best = { o: small.o, score: 0 };

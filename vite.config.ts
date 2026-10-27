@@ -3,6 +3,22 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteSingleFile } from 'vite-plugin-singlefile';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import type { Plugin } from 'vite';
+
+/** Single-file build: embed the icons referenced by index.html as data URIs. */
+function inlineIcons(): Plugin {
+  const toData = (file: string, type: string): string =>
+    `data:${type};base64,${readFileSync(resolve(import.meta.dirname, 'public', file)).toString('base64')}`;
+  return {
+    name: 'inline-icons',
+    transformIndexHtml: (html) =>
+      html
+        .replace('./icons/favicon.svg', toData('icons/favicon.svg', 'image/svg+xml'))
+        .replace('./icons/apple-touch-icon.png', toData('icons/apple-touch-icon.png', 'image/png')),
+  };
+}
 
 const THEME = '#0B0F17';
 
@@ -14,7 +30,7 @@ export default defineConfig(({ mode }) => {
       react(),
       tailwindcss(),
       single
-        ? viteSingleFile()
+        ? [viteSingleFile(), inlineIcons()]
         : VitePWA({
             registerType: 'autoUpdate',
             injectRegister: 'auto',
@@ -47,6 +63,7 @@ export default defineConfig(({ mode }) => {
             },
           }),
     ],
+    publicDir: single ? false : 'public',
     build: {
       outDir: single ? 'dist-single' : 'dist',
       emptyOutDir: true,

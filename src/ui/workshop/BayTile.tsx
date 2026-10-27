@@ -178,8 +178,10 @@ export function BayTile({
           <span className="flex h-11 w-11 items-center justify-center rounded-full border border-dashed border-line bg-bg-0/70 text-dim">
             <UserPlus size={20} />
           </span>
-          <span className="text-[14px] font-bold text-ink">{S.workshop.emptyBay}</span>
-          <span className="text-[14px] text-dim">{S.workshop.hireHint}</span>
+          <span className="rounded-xl bg-bg-0/80 px-2 py-1">
+            <span className="block text-[14px] font-bold text-ink">{S.workshop.emptyBay}</span>
+            <span className="block text-[14px] text-dim">{S.workshop.hireHint}</span>
+          </span>
         </div>
       )}
       {!job && !empty && (

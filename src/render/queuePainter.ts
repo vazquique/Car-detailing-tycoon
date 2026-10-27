@@ -111,8 +111,8 @@ export function drawQueue(sf: Surface, s: GameState, now: number, dt: number): v
   ctx.lineDashOffset = -time * 8;
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(0, h - 6);
-  ctx.lineTo(w, h - 6);
+  ctx.moveTo(0, h - 2);
+  ctx.lineTo(w, h - 2);
   ctx.stroke();
   ctx.setLineDash([]);
 
@@ -122,12 +122,16 @@ export function drawQueue(sf: Surface, s: GameState, now: number, dt: number): v
   ctx.fillStyle = 'rgba(255,255,255,0.05)';
   for (let i = 0; i < cap; i++) {
     ctx.beginPath();
-    ctx.roundRect(x0 + i * slot - slot * 0.42, 18, slot * 0.84, h - 30, 8);
+    ctx.roundRect(x0 + i * slot - slot * 0.42, 4, slot * 0.84, h - 10, 8);
     ctx.fill();
   }
 
-  const unit = Math.min(h - 40, slot * 1.7);
-  const carY = h * 0.55;
+  // Layout: patience ring on top, the car in the middle, service icons in a row below.
+  const ringR = Math.max(6, Math.min(9, slot * 0.2));
+  const iconsY = h - 14;
+  const carTop = ringR * 2 + 6;
+  const unit = Math.min(iconsY - 8 - carTop, slot * 1.75);
+  const carY = carTop + unit / 2;
   s.queue.forEach((c, i) => {
     const target = x0 + i * slot;
     let p = positions.get(c.id);
@@ -140,52 +144,40 @@ export function drawQueue(sf: Surface, s: GameState, now: number, dt: number): v
     const bob = Math.abs(p.x - target) > 1 ? Math.sin(time * 18) * 0.6 : 0;
     drawCar(ctx, c.vehicle, c.color, p.x, carY + bob, unit, 0, { dirt: 1, dirtLevel: c.dirt });
 
-    // Contract / VIP tags.
-    if (c.contractId !== null || c.vip) {
-      ctx.fillStyle = c.vip ? PALETTE.money : PALETTE.water;
+    const ry = ringR + 3;
+    if (c.contractId !== null) {
+      // Fleet cars don't lose patience: show a fleet badge instead of the ring.
+      ctx.fillStyle = PALETTE.water;
       ctx.beginPath();
-      ctx.roundRect(p.x - slot * 0.36, h - 22, slot * 0.72, 12, 6);
+      ctx.roundRect(p.x - ringR * 1.4, ry - ringR, ringR * 2.8, ringR * 2, ringR);
       ctx.fill();
       ctx.fillStyle = '#0B0F17';
-      ctx.font = '700 9px Inter, system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(c.vip ? 'VIP' : 'FLOTA', p.x, h - 15.5);
-    }
-
-    // Patience ring with a face.
-    const r = Math.min(10, slot * 0.22);
-    const rx = p.x + slot * 0.24;
-    const ry = 14;
-    if (c.contractId === null) {
+      ctx.fillRect(p.x - ringR * 0.8, ry - ringR * 0.35, ringR * 1.2, ringR * 0.8);
+      ctx.fillRect(p.x + ringR * 0.4, ry - ringR * 0.1, ringR * 0.45, ringR * 0.55);
+    } else {
       const f = Math.max(0, 1 - c.waited / c.patience);
-      const col = patienceColor(f);
+      const col = c.vip ? PALETTE.money : patienceColor(f);
       ctx.fillStyle = '#0B0F17';
       ctx.beginPath();
-      ctx.arc(rx, ry, r + 2.5, 0, Math.PI * 2);
+      ctx.arc(p.x, ry, ringR + 2.5, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = col;
+      ctx.fillStyle = patienceColor(f);
       ctx.beginPath();
-      ctx.arc(rx, ry, r - 1.5, 0, Math.PI * 2);
+      ctx.arc(p.x, ry, ringR - 1.5, 0, Math.PI * 2);
       ctx.fill();
       ctx.strokeStyle = col;
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = c.vip ? 3 : 2.5;
       ctx.beginPath();
-      ctx.arc(rx, ry, r + 1, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * f);
+      ctx.arc(p.x, ry, ringR + 1, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * f);
       ctx.stroke();
-      drawFace(ctx, rx, ry, r - 1.5, f);
+      drawFace(ctx, p.x, ry, ringR - 1.5, f);
     }
-    // Service bubble.
+    // Requested services.
     const n = c.services.length;
-    const gr = Math.min(5.5, (slot * 0.8) / (n * 2.3));
-    const bw = n * gr * 2.3 + 4;
-    const bx = p.x - slot * 0.12 - bw / 2;
-    ctx.fillStyle = 'rgba(232,238,249,0.92)';
-    ctx.beginPath();
-    ctx.roundRect(bx, 4, bw, gr * 2 + 4, gr + 2);
-    ctx.fill();
+    const gr = Math.max(3.5, Math.min(5.5, (slot * 0.9) / (n * 2.25)));
+    const rowW = n * gr * 2.25;
     c.services.forEach((id, k) =>
-      drawServiceGlyph(ctx, id, bx + 2 + gr * 1.15 + k * gr * 2.3, 6 + gr, gr, true),
+      drawServiceGlyph(ctx, id, p.x - rowW / 2 + gr * 1.12 + k * gr * 2.25, iconsY, gr, true),
     );
   });
 

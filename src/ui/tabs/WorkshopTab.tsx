@@ -54,7 +54,6 @@ export function WorkshopTab() {
         {s.bays.map((b, i) => {
           const worker = s.workers.find((w) => w.id === b.workerId);
           const pct = Math.round(BAY_LEVEL_SPEED * (b.level - 1) * 100);
-          const nextPct = Math.round(BAY_LEVEL_SPEED * b.level * 100);
           return (
             <Card key={b.id} className="flex items-center gap-3 p-3">
               <div
@@ -72,10 +71,7 @@ export function WorkshopTab() {
                 <div className="truncate text-[14px] text-dim">
                   {b.isOwner ? S.workshop.owner : worker ? worker.name : S.workshop.emptyBay}
                 </div>
-                <div className="truncate text-[14px] text-dim">
-                  {S.workshop.baySpeed(pct)}
-                  {b.level < BAY_MAX_LEVEL && <span className="text-gain"> → +{nextPct}%</span>}
-                </div>
+                <div className="truncate text-[14px] text-dim">{S.workshop.baySpeed(pct)}</div>
               </div>
               {b.level < BAY_MAX_LEVEL ? (
                 <BuyButton

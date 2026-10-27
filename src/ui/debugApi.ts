@@ -55,6 +55,53 @@ export const debugApi = {
     mutate((s) => {
       for (let i = 0; i < n; i++) spawnWalkIn(s);
     }),
+  /** Prepares a showcase state (used by the screenshot script). */
+  stage: (name: 'garage' | 'nave' | 'studio' | 'franchise') =>
+    mutate((s) => {
+      const loc = name === 'garage' ? 0 : name === 'nave' ? 2 : 3;
+      s.location = loc;
+      const owned: Record<number, string[]> = {
+        0: ['pressureWasher', 'vacuum', 'wheelKit'],
+        2: [
+          'pressureWasher',
+          'vacuum',
+          'wheelKit',
+          'waxKit',
+          'foamCannon',
+          'engineKit',
+          'headlightKit',
+          'extractor',
+          'clayKit',
+          'orbitalPolisher',
+          'rotaryPolisher',
+          'inspectionLamps',
+          'curingBooth',
+        ],
+        3: EQUIPMENT.map((e) => e.id),
+      };
+      for (const id of owned[loc] ?? []) {
+        const e = EQUIPMENT.find((x) => x.id === id);
+        if (e) s.equipment[e.id] = Math.max(1, s.equipment[e.id]);
+      }
+      s.reputation = name === 'garage' ? 3.4 : 4.7;
+      s.money = name === 'garage' ? 860 : name === 'nave' ? 2_450_000 : 31_800_000;
+      s.minute = 13 * 60 + 20;
+      const max = LOCATIONS[loc]?.maxBays ?? 2;
+      while (s.bays.length < max) s.bays.push(newBay(s.nextId++, false));
+      const want = max - 1 - s.workers.length;
+      for (let i = 0; i < want; i++) {
+        refreshCandidates(s);
+        const c = s.candidates[0];
+        if (!c) break;
+        c.level = name === 'garage' ? 1 : 4 + (i % 6);
+        s.workers.push(c);
+      }
+      refreshCandidates(s);
+      autoAssignWorkers(s);
+      s.bays.forEach((b, i) => (b.level = Math.min(10, 1 + ((loc * 2 + i) % 6))));
+      if (name === 'franchise') s.runStats.totalEarned = 25_000_000;
+      for (let i = 0; i < 12; i++) spawnWalkIn(s);
+    }),
   rain: () => mutate((s) => (s.weather = 'rain')),
   waterCut: () => mutate((s) => addEffect(s, 'waterCut', 120)),
   vip: () => mutate((s) => spawnVip(s)),

@@ -8,7 +8,9 @@ import { queueCapacity } from '../../game/sim/economy';
 import { S } from '../../game/data/strings';
 import { unlockAudio, play } from '../../audio/sfx';
 
-export const QUEUE_HEIGHT = 112;
+export const QUEUE_HEIGHT = 118;
+/** Lane plus the small caption bar under it. */
+export const QUEUE_BLOCK_HEIGHT = QUEUE_HEIGHT + 28;
 
 export function QueueStrip() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -40,17 +42,20 @@ export function QueueStrip() {
             }
           }}
         />
-        <div className="pointer-events-none absolute right-2 bottom-1.5 flex items-center gap-1 rounded-full bg-bg-0/80 px-2 py-0.5 text-[14px] font-bold text-dim">
-          <Users size={14} aria-hidden />
-          <span className="tabular">
-            {S.workshop.queue} {count}/{cap}
-          </span>
-        </div>
         {count === 0 && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-[14px] font-medium text-dim">
             {night ? S.daySummary.night : S.workshop.queueEmpty}
           </div>
         )}
+      </div>
+      <div className="flex h-7 items-center justify-between bg-bg-1/80 px-3 text-[14px] text-dim">
+        <span className="flex items-center gap-1.5 font-bold">
+          <Users size={14} aria-hidden />
+          <span className="tabular">
+            {S.workshop.queue} {count}/{cap}
+          </span>
+        </span>
+        {count > 0 && <span className="truncate pl-2">{S.workshop.queueTip}</span>}
       </div>
     </div>
   );

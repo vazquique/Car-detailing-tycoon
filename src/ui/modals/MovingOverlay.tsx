@@ -5,6 +5,7 @@ import { S, locationName } from '../../game/data/strings';
 import { burstConfetti, SCREEN_LAYER } from '../../render/particles';
 import { play, vibrate } from '../../audio/sfx';
 import { refitAll } from '../../render/loop';
+import { shake } from '../fx';
 
 const MOVE_MS = 2600;
 
@@ -22,6 +23,7 @@ export function MovingOverlay() {
       const root = document.querySelector('#game')?.getBoundingClientRect();
       burstConfetti(SCREEN_LAYER, (root?.width ?? 390) / 2, (root?.height ?? 800) * 0.45, 80);
       play('achievement');
+      shake();
     }, MOVE_MS * 0.55);
     const t2 = window.setTimeout(() => {
       setMoving(null);
