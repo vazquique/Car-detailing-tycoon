@@ -12,22 +12,22 @@ export interface LocationDef {
 }
 
 export const LOCATIONS: readonly LocationDef[] = [
-  { cost: 0, rent: 0, maxBays: 2, queueSlots: 3, arrivalSeconds: 14, candidateLevel: [1, 1] },
-  { cost: 25000, rent: 800, maxBays: 4, queueSlots: 5, arrivalSeconds: 9, candidateLevel: [1, 2] },
+  { cost: 0, rent: 0, maxBays: 2, queueSlots: 3, arrivalSeconds: 7, candidateLevel: [1, 1] },
+  { cost: 12000, rent: 800, maxBays: 4, queueSlots: 5, arrivalSeconds: 5, candidateLevel: [1, 2] },
   {
-    cost: 600000,
-    rent: 9000,
-    maxBays: 8,
+    cost: 150000,
+    rent: 5000,
+    maxBays: 10,
     queueSlots: 8,
-    arrivalSeconds: 6,
+    arrivalSeconds: 2,
     candidateLevel: [2, 3],
   },
   {
     cost: 12000000,
-    rent: 120000,
+    rent: 50000,
     maxBays: 12,
     queueSlots: 10,
-    arrivalSeconds: 4.5,
+    arrivalSeconds: 1.2,
     candidateLevel: [2, 3],
   },
 ];

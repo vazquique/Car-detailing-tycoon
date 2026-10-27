@@ -13,6 +13,7 @@ import { arrivalRate, canDoServiceNow, isVehicleUnlocked } from '../src/game/sim
 import { giveXp } from '../src/game/sim/staff';
 import { startDay } from '../src/game/sim/day';
 import { CALENDAR } from '../src/game/data/economy';
+import { PRESTIGE } from '../src/game/data/prestige';
 
 describe('locations and vehicles', () => {
   it('moving keeps equipment and staff and unlocks bigger cars', () => {
@@ -84,7 +85,7 @@ describe('events and marketing', () => {
     s.money = 10000;
     addEffect(s, 'waterCut', 100);
     expect(canDoServiceNow(s, 'exterior')).toBe(false);
-    const fixed = orderPipe(s, undefined as never);
+    const fixed = orderPipe(s);
     expect(canDoServiceNow(fixed, 'exterior')).toBe(true);
     s.upgrades.cistern = 1;
     expect(canDoServiceNow(s, 'exterior')).toBe(true);
@@ -131,7 +132,7 @@ describe('franchise', () => {
   it('resets the run, keeps achievements and gives PF', () => {
     const s = createInitialState(1);
     s.location = 3;
-    s.runStats.totalEarned = 100e6;
+    s.runStats.totalEarned = 100 * PRESTIGE.divisor;
     s.achievements.push('firstCustomer');
     expect(pfForRun(s)).toBe(10);
     const next = franchise(s);

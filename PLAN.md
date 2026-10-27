@@ -45,13 +45,13 @@ Checklist de construcción. Se marca cada punto al terminarlo. Cada fase cierra 
 
 ## Fase 3 — Meta-progreso y balance
 
-- [ ] Logros (25)
-- [ ] Franquicia + árbol completo
-- [ ] Estadísticas
-- [ ] Simulación de balance (tests/balance.test.ts) con bot
-- [ ] Ajustar números hasta cumplir ventanas
-- [ ] BALANCE.md
-- [ ] Commit fase 3
+- [x] Logros (25)
+- [x] Franquicia + árbol completo
+- [x] Estadísticas
+- [x] Simulación de balance (tests/balance.test.ts) con bot
+- [x] Ajustar números hasta cumplir ventanas
+- [x] BALANCE.md
+- [x] Commit fase 3
 
 ## Fase 4 — Pulido
 

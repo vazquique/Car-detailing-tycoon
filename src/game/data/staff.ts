@@ -81,7 +81,7 @@ export const STAFF = {
   /** Minimum hire cost; scales with stats, level and location. */
   hireCostBase: 1200,
   hireCostPerLevel: 1.8,
-  hireCostPerLocation: 3.2,
+  hireCostPerLocation: 2.5,
   /** Refresh cost = this × (location index + 1). */
   refreshCost: 200,
   maxLevel: 10,

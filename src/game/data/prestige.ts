@@ -27,7 +27,7 @@ export const PRESTIGE_NODE_BY_ID: Readonly<Record<PrestigeNodeId, PrestigeNodeDe
 
 export const PRESTIGE = {
   /** PF = floor(sqrt(runEarnings / divisor)) */
-  divisor: 1_000_000,
+  divisor: 130_000,
   /** Location index required to franchise. */
   minLocation: 3,
   seedCapital: [0, 1000, 5000, 25000, 100000, 500000] as readonly number[],

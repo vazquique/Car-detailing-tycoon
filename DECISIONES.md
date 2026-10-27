@@ -17,3 +17,16 @@ Decisiones tomadas por mi cuenta, con una línea de por qué.
 - **Cliente enojado**: cuenta como reseña de 1 estrella en el promedio de reputación (además a veces deja la reseña escrita).
 - **Textos de reseñas, nombres y modelos** viven en sus propios archivos de datos (`reviews.ts`, `names.ts`, `carModels.ts`); el resto de la interfaz está en `strings.ts`.
 - **Mudanza**: solo al siguiente local, en orden. El costo no cuenta como gasto del día.
+
+## Balance (ajustado con `tests/balance.test.ts`)
+
+- **Tiempos de servicio ~45% más cortos** que los del documento (ej. Lavado exterior 12 s en vez de 20 s): con los originales el bot tardaba casi una hora en salir de la cochera.
+- **Llegadas por local**: cochera cada 7 s, Local cada 5 s, Nave cada 2 s y Estudio cada 1.2 s. Más clientes mantienen la capacidad (bahías y personal) como lo que hay que mejorar.
+- **Mudanzas**: Local $12,000 (antes $25,000), Nave $150,000 (antes $600,000), Estudio $12,000,000 (igual). Rentas: $800, $5,000 y $50,000 diarios.
+- **La Nave tiene 10 bahías** (antes 8): con 8 se quedaba sin nada que mejorar y el ingreso se estancaba más de 20 minutos.
+- **Contrataciones más baratas en locales grandes** (crecen ×2.5 por local en vez de ×3.2).
+- **Puntos de Franquicia** = raíz(ganancias / 130,000) en vez de / 1,000,000, para dar 8 a 15 PF a las 3 h.
+- **Cada PF ganado da +8% de ingresos** (antes 3%): con 3% la segunda partida no llegaba 1.8 veces más rápido.
+- **"Sin estancarse"** se mide como: el promedio de ingreso por minuto de los últimos 20 minutos (solo autos atendidos; los pagos de contratos llegan en bloque) debe alcanzar un nuevo máximo al menos cada 20 minutos. Con promedio de 10 min los fines de semana y quincenas creaban picos que no eran crecimiento real.
+- **El bot sigue el tutorial** (después de la Hidrolavadora contrata a su primer ayudante) y **evalúa como una sola compra** los servicios que necesitan dos equipos (Corrección de pintura).
+- **Robustez**: con 8 semillas distintas, 7 cumplen todas las ventanas; la otra tuvo un estancamiento de 23 min. La prueba usa la semilla 1.

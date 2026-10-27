@@ -24,7 +24,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'exterior',
     basePrice: 100,
-    baseTime: 20,
+    baseTime: 12,
     requires: ['bucket'],
     minLevel: 1,
     demand: 10,
@@ -36,7 +36,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'interior',
     basePrice: 80,
-    baseTime: 18,
+    baseTime: 11,
     requires: ['vacuum'],
     minLevel: 1,
     demand: 7,
@@ -48,7 +48,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'wheels',
     basePrice: 120,
-    baseTime: 12,
+    baseTime: 8,
     requires: ['wheelKit'],
     minLevel: 1,
     demand: 6,
@@ -60,7 +60,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'wax',
     basePrice: 300,
-    baseTime: 30,
+    baseTime: 18,
     requires: ['waxKit'],
     minLevel: 1,
     demand: 5,
@@ -72,7 +72,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'engine',
     basePrice: 250,
-    baseTime: 25,
+    baseTime: 15,
     requires: ['pressureWasher', 'engineKit'],
     minLevel: 2,
     demand: 3,
@@ -84,7 +84,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'headlights',
     basePrice: 400,
-    baseTime: 30,
+    baseTime: 18,
     requires: ['headlightKit'],
     minLevel: 2,
     demand: 3,
@@ -96,7 +96,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'upholstery',
     basePrice: 600,
-    baseTime: 45,
+    baseTime: 26,
     requires: ['extractor'],
     minLevel: 3,
     demand: 3,
@@ -108,7 +108,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'clay',
     basePrice: 500,
-    baseTime: 40,
+    baseTime: 24,
     requires: ['clayKit'],
     minLevel: 3,
     demand: 3,
@@ -120,7 +120,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'polish',
     basePrice: 1500,
-    baseTime: 90,
+    baseTime: 50,
     requires: ['orbitalPolisher'],
     minLevel: 4,
     demand: 2.5,
@@ -132,7 +132,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'correction',
     basePrice: 4500,
-    baseTime: 180,
+    baseTime: 95,
     requires: ['rotaryPolisher', 'inspectionLamps'],
     minLevel: 6,
     demand: 1.6,
@@ -144,7 +144,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'ceramic',
     basePrice: 9000,
-    baseTime: 240,
+    baseTime: 125,
     requires: ['curingBooth'],
     minLevel: 7,
     demand: 1.2,
@@ -156,7 +156,7 @@ export const SERVICES: readonly ServiceDef[] = [
   {
     id: 'ppf',
     basePrice: 25000,
-    baseTime: 420,
+    baseTime: 210,
     requires: ['ppfPlotter'],
     minLevel: 9,
     demand: 0.8,

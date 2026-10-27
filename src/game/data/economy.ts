@@ -50,7 +50,7 @@ export const ECONOMY = {
   serviceCountWeights: [34, 36, 21, 9],
   /** Achievements: +1% income each. PF: +3% income each. */
   achievementIncome: 0.01,
-  prestigeIncome: 0.03,
+  prestigeIncome: 0.08,
   /** Owner hand-wash: progress speed of the scrub mini-game target time (seconds per step). */
   handStepTargetSeconds: 4,
   /** Fraction of the area to cover to finish a scrub step. */

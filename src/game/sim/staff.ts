@@ -41,7 +41,7 @@ export function generateCandidate(s: GameState): Worker {
   const hireCost =
     Math.round(
       (STAFF.hireCostBase *
-        (0.7 + score * 0.8) *
+        (0.85 + score * 0.8) *
         Math.pow(STAFF.hireCostPerLevel, level - 1) *
         Math.pow(STAFF.hireCostPerLocation, s.location)) /
         50,
