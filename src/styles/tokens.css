@@ -1,0 +1,45 @@
+/* Design tokens. Keep in sync with src/game/palette.ts */
+:root {
+  --bg-0: #0b0f17;
+  --bg-1: #111827;
+  --surface-0: #151c2c;
+  --surface-1: #1c2538;
+  --border: #2a3550;
+  --text: #e8eef9;
+  --text-dim: #8a97b2;
+  --water: #22d3ee;
+  --water-deep: #0ea5e9;
+  --soap: #f472b6;
+  --money: #facc15;
+  --gain: #4ade80;
+  --loss: #f87171;
+  --warn: #fb923c;
+  --star: #fcd34d;
+  --radius: 16px;
+  --font-display: 'Russo One', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+@theme {
+  --color-bg-0: #0b0f17;
+  --color-bg-1: #111827;
+  --color-surface-0: #151c2c;
+  --color-surface-1: #1c2538;
+  --color-line: #2a3550;
+  --color-ink: #e8eef9;
+  --color-dim: #8a97b2;
+  --color-water: #22d3ee;
+  --color-water-deep: #0ea5e9;
+  --color-soap: #f472b6;
+  --color-money: #facc15;
+  --color-gain: #4ade80;
+  --color-loss: #f87171;
+  --color-warn: #fb923c;
+  --color-star: #fcd34d;
+  --font-display: 'Russo One', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}

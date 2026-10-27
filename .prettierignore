@@ -1,0 +1,7 @@
+dist
+dist-single
+dev-dist
+node_modules
+screenshots
+public
+package-lock.json
