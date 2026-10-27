@@ -39,3 +39,4 @@ Decisiones tomadas por mi cuenta, con una línea de por qué.
 - **El archivo único** también lleva incrustados el ícono y el favicon; ahí no hay service worker (se abre como archivo).
 - **Capturas**: el script limpia celebraciones y avisos antes de cada captura, para que se vea cada pantalla tal cual.
 - **Verificado en navegador**: el minijuego con el dedo (emulación táctil), recargar la página conserva la partida y cobra la ganancia offline, y 3 minutos a ×20 sin errores ni advertencias en la consola.
+- **Publicación en la rama `gh-pages`**: GitHub Actions construye el juego y lo sube a esa rama; GitHub activa Pages solo, sin entrar a Settings.

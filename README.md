@@ -15,12 +15,9 @@ Un juego para celular de un negocio de lavado y detallado de autos. Empiezas lav
 
 ### Opción 1: publicado en GitHub Pages
 
-Cada vez que se sube código a la rama `main`, GitHub construye el juego y lo publica solo.
+Ya está publicado en **https://vazquique.github.io/Car-detailing-tycoon/**
 
-1. En GitHub, entra a tu repositorio → **Settings** → **Pages**.
-2. En **Source** elige **GitHub Actions**.
-3. Espera 2 o 3 minutos (puedes verlo en la pestaña **Actions**).
-4. El juego queda en: `https://<tu-usuario>.github.io/<nombre-del-repositorio>/`
+Cada vez que se sube código a la rama `main`, GitHub construye el juego, lo sube a la rama `gh-pages` y lo publica solo (tarda 1 o 2 minutos). No hay que configurar nada.
 
 ### Opción 2: un solo archivo
 
